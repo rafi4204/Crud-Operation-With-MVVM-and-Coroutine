@@ -1,5 +1,6 @@
 package com.example.crudoperationwithmvvmandcoroutine.network
 
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -8,12 +9,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 class RetrofitInstance {
     @Provides
-    fun retrofitInstance(){
+    fun retrofitInstance():Retrofit{
         return Retrofit.Builder()
             .baseUrl("https://jsonplaceholder.typicode.com/")
-            .client(client)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
 
 
