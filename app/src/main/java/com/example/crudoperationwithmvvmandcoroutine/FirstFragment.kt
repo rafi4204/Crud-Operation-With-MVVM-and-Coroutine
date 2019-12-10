@@ -2,10 +2,12 @@ package com.example.crudoperationwithmvvmandcoroutine
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 
 
 class FirstFragment : Fragment() {
@@ -26,7 +28,10 @@ class FirstFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(FirstViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel.liveUserData.observe(this, Observer{
+            Log.d("2",it.body()?.size.toString())
+        })
+
     }
 
 }

@@ -7,6 +7,6 @@ import retrofit2.Response
 
 interface ApiService {
     @POST("/posts")
-    suspend fun requestForUserData(): Response<ResponseModel>
+    suspend fun requestForUserData(): Response<ArrayList<ResponseModel>>
 
 }
