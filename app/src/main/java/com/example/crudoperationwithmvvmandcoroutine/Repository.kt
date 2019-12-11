@@ -8,9 +8,9 @@ import javax.inject.Inject
 class Repository @Inject constructor() {
 
     @Inject
-    lateinit var retrofit: Retrofit
+    lateinit var retrofit: RetrofitInstance
 
-    suspend fun getData()=retrofit.create(ApiService::class.java).requestForUserData()
+    suspend fun getData()=retrofit.retrofitInstance().create(ApiService::class.java).requestForUserData().await()
 
 
 }

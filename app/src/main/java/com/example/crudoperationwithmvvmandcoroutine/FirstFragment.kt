@@ -8,10 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import com.example.crudoperationwithmvvmandcoroutine.di.DaggerAppComponent
+import com.example.crudoperationwithmvvmandcoroutine.network.RetrofitInstance
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import retrofit2.Retrofit
+import javax.inject.Inject
 
 
 class FirstFragment : Fragment() {
-
+    //@Inject
+//lateinit var retrofit: RetrofitInstance
     companion object {
         fun newInstance() = FirstFragment()
     }
@@ -25,11 +31,13 @@ class FirstFragment : Fragment() {
         return inflater.inflate(R.layout.first_fragment, container, false)
     }
 
+    @ExperimentalCoroutinesApi
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         viewModel = ViewModelProviders.of(this).get(FirstViewModel::class.java)
-        viewModel.liveUserData.observe(this, Observer{
-            Log.d("2",it.body()?.size.toString())
+        viewModel.liveUserData.observe(this, Observer {
+            Log.d("2", it.body()?.size.toString())
         })
 
     }
