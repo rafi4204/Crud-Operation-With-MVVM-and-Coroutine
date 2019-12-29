@@ -16,8 +16,8 @@ import javax.inject.Inject
 
 
 class FirstFragment : Fragment() {
-    //@Inject
-//lateinit var retrofit: RetrofitInstance
+    @Inject
+lateinit var repository: Repository
     companion object {
         fun newInstance() = FirstFragment()
     }
@@ -35,10 +35,15 @@ class FirstFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+       /* val repComponent=DaggerAppComponent.create()
+        repComponent.inject(this)
+        repository.test()*/
+
         viewModel = ViewModelProviders.of(this).get(FirstViewModel::class.java)
         viewModel.liveUserData.observe(this, Observer {
             Log.d("2", it.body()?.size.toString())
         })
+      //  viewModel.testVM()
 
     }
 

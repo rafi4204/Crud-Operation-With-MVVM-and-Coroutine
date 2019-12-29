@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
 
-open class RetrofitInstance @Inject constructor() {
+open class RetrofitInstance  {
 
     fun retrofitInstance():Retrofit{
         return Retrofit.Builder()

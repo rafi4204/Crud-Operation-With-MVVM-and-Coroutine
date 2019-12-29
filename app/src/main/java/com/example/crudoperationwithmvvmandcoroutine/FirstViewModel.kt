@@ -13,21 +13,22 @@ import javax.inject.Inject
 class FirstViewModel : ViewModel() {
     @Inject
     lateinit var repository: Repository
+
     init {
-        val appComponent = DaggerAppComponent.create()
-        appComponent.inject(this)
+        val repComponent=DaggerAppComponent.create()
+        repComponent.inject(this)
+
     }
 
-     val liveUserData: LiveData<Response<ArrayList<ResponseModel>>> = liveData(Dispatchers.IO) {
+
+    val liveUserData: LiveData<Response<ArrayList<ResponseModel>>> = liveData(Dispatchers.IO) {
         val data = repository.getData()
         emit(data)
     }
 
-
-
-
-
-
+    fun testVM() {
+        repository.test2()
+    }
 
 
 }
