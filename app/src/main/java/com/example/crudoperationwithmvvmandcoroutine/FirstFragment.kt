@@ -41,7 +41,7 @@ lateinit var repository: Repository
 
         viewModel = ViewModelProviders.of(this).get(FirstViewModel::class.java)
         viewModel.liveUserData.observe(this, Observer {
-            Log.d("2", it.body()?.size.toString())
+            Log.d("2", it.body()?.item?.size.toString())
         })
       //  viewModel.testVM()
 

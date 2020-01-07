@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.example.crudoperationwithmvvmandcoroutine.di.DaggerAppComponent
+import com.example.crudoperationwithmvvmandcoroutine.model.BaseResponseModel
 import com.example.crudoperationwithmvvmandcoroutine.model.ResponseModel
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +22,7 @@ class FirstViewModel : ViewModel() {
     }
 
 
-    val liveUserData: LiveData<Response<ArrayList<ResponseModel>>> = liveData(Dispatchers.IO) {
+    val liveUserData: LiveData<Response<BaseResponseModel>> = liveData(Dispatchers.IO) {
         val data = repository.getData()
         emit(data)
     }
