@@ -1,7 +1,9 @@
 package com.example.crudoperationwithmvvmandcoroutine.model
 
+import com.google.gson.annotations.SerializedName
 import java.util.ArrayList
 
 class BaseResponseModel {
-    var item=ArrayList<ResponseModel>()
+    @SerializedName("")
+    var item : ArrayList<ResponseModel> = arrayListOf()
 }

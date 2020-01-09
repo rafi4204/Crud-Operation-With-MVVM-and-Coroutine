@@ -22,7 +22,7 @@ class FirstViewModel : ViewModel() {
     }
 
 
-    val liveUserData: LiveData<Response<BaseResponseModel>> = liveData(Dispatchers.IO) {
+    val liveUserData: LiveData<Response<ArrayList<ResponseModel>>> = liveData(Dispatchers.IO) {
         val data = repository.getData()
         emit(data)
     }

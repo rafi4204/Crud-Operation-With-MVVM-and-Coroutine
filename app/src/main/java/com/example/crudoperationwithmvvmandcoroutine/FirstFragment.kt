@@ -17,7 +17,8 @@ import javax.inject.Inject
 
 class FirstFragment : Fragment() {
     @Inject
-lateinit var repository: Repository
+    lateinit var repository: Repository
+
     companion object {
         fun newInstance() = FirstFragment()
     }
@@ -25,8 +26,7 @@ lateinit var repository: Repository
     private lateinit var viewModel: FirstViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.first_fragment, container, false)
     }
@@ -35,15 +35,15 @@ lateinit var repository: Repository
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-       /* val repComponent=DaggerAppComponent.create()
-        repComponent.inject(this)
-        repository.test()*/
+        /* val repComponent=DaggerAppComponent.create()
+         repComponent.inject(this)
+         repository.test()*/
 
         viewModel = ViewModelProviders.of(this).get(FirstViewModel::class.java)
         viewModel.liveUserData.observe(this, Observer {
-            Log.d("2", it.body()?.item?.size.toString())
+            Log.d("2", it.body()?.size.toString())
         })
-      //  viewModel.testVM()
+        //  viewModel.testVM()
 
     }
 
